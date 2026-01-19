@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white p-6 rounded shadow">
+  <h2 class="font-semibold">Upload Exam / Resume / JD</h2>
+  <form id="uploadForm" class="mt-4">
+    <select id="type" class="border p-2 rounded">
+      <option value="exam">Exam</option>
+      <option value="resume">Resume</option>
+      <option value="jd">JD</option>
+    </select>
+    <input type="file" id="fileInput" class="ml-2" />
+    <button class="ml-2 px-4 py-2 bg-indigo-600 text-white rounded">Upload</button>
+  </form>
+  <pre id="uploadResult" class="mt-4 text-sm bg-slate-100 p-2 rounded"></pre>
+</div>
+<script>
+document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = document.getElementById('fileInput').files[0];
+  if(!f){ alert('Select a file'); return; }
+  const fd = new FormData();
+  fd.append('file', f);
+  fd.append('type', document.getElementById('type').value);
+  const res = await fetch('/api/upload', {method:'POST', body: fd});
+  const j = await res.json();
+  document.getElementById('uploadResult').textContent = JSON.stringify(j, null, 2);
+});
+</script>
+{% endblock %}

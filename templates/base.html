@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>XamSetu — AI Mentor</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom global CSS -->
+  <link rel="stylesheet" href="/static/styles.css"/>
+
+  <style>
+    :root {
+      --brand: #5a2d82;
+      --brand-2: #7a42a6;
+    }
+    
+    /* Smooth transitions */
+    * {
+      transition-property: color, background-color, border-color;
+      transition-duration: 200ms;
+      transition-timing-function: ease-in-out;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--brand);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--brand-2);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+  <!-- TOP NAVBAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- LOGO -->
+        <a href="/" class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl 
+                      bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)]
+                      text-white font-extrabold flex items-center justify-center 
+                      shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+            <span class="text-sm sm:text-base">XS</span>
+          </div>
+          <div class="hidden sm:block">
+            <div class="text-lg sm:text-xl font-bold text-[var(--brand)]">XamSetu</div>
+            <div class="text-[10px] sm:text-xs text-gray-500 -mt-0.5 tracking-wide">
+              Explainable AI Mentor
+            </div>
+          </div>
+          <div class="block sm:hidden">
+            <div class="text-base font-bold text-[var(--brand)]">XamSetu</div>
+          </div>
+        </a>
+
+        <!-- MENU (Desktop) -->
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="/" 
+             class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 
+                    hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+            Home
+          </a>
+          <a href="/chat" 
+             class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 
+                    hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+            Chat
+          </a>
+          <a href="/dashboard" 
+             class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 
+                    hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+            Dashboard
+          </a>
+          <a href="/upload" 
+             class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 
+                    hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+            Upload
+          </a>
+          <a href="/resources" 
+             class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 
+                    hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+            Resources
+          </a>
+        </nav>
+
+        <!-- Hamburger (Mobile & Tablet) -->
+        <button id="menuBtn" 
+                class="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 
+                       focus:outline-none focus:ring-2 focus:ring-[var(--brand)] focus:ring-offset-1
+                       transition-all"
+                aria-label="Toggle menu"
+                aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE DROPDOWN MENU -->
+    <div id="mobileMenu" 
+         class="hidden lg:hidden bg-white border-t border-gray-200 shadow-lg">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-1">
+        <a href="/" 
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 
+                  hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+          Home
+        </a>
+        <a href="/chat" 
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 
+                  hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+          Chat
+        </a>
+        <a href="/dashboard" 
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 
+                  hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+          Dashboard
+        </a>
+        <a href="/upload" 
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 
+                  hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+          Upload
+        </a>
+        <a href="/resources" 
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 
+                  hover:text-[var(--brand)] hover:bg-purple-50 transition-all">
+          Resources
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="min-h-[calc(100vh-200px)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- Footer text -->
+        <div class="text-sm text-gray-600 text-center sm:text-left">
+          Built with <span class="text-red-500">❤️</span> by 
+          <span class="font-semibold text-[var(--brand)]">XamSetu</span>
+        </div>
+        
+        <!-- Tagline -->
+        <div class="text-xs sm:text-sm text-gray-500 text-center sm:text-right">
+          Empowering Learning × Earning
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="mt-4 pt-4 border-t border-gray-100 text-center">
+        <p class="text-xs text-gray-400">
+          © 2024 XamSetu. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("mobileMenu");
+    const menuIcon = document.getElementById("menuIcon");
+
+    btn.addEventListener("click", () => {
+      const isHidden = menu.classList.contains("hidden");
+      
+      // Toggle menu visibility
+      menu.classList.toggle("hidden");
+      
+      // Update aria-expanded
+      btn.setAttribute("aria-expanded", isHidden ? "true" : "false");
+      
+      // Animate icon (hamburger to X)
+      if (isHidden) {
+        menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
+      } else {
+        menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+        menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.classList.contains("hidden")) {
+        menu.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+        menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+      }
+    });
+  </script>
+
+</body>
+</html>

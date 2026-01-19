@@ -1,0 +1,4 @@
+[
+  {"id":1,"title":"Python Basics Test","skills":["Python"],"difficulty":"Easy"},
+  {"id":2,"title":"SQL Fundamentals","skills":["SQL"],"difficulty":"Medium"}
+]

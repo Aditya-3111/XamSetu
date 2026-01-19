@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "username": "demo",
+    "password": "demo",
+    "role": "student",
+    "created_at": "2025-10-10T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "full_name": "Satyaprakash Srivastava",
+    "phone": "06393444944",
+    "email": "satyaprakashsrivastava4804@gmail.com",
+    "occupation": "student",
+    "password": "12345678",
+    "created_at": "2025-12-10T19:03:17.592928Z"
+  },
+  {
+    "id": 3,
+    "full_name": "saksham dubey",
+    "phone": "06393444944",
+    "email": "s4804@gmail.com",
+    "occupation": "student",
+    "password": "12345678",
+    "created_at": "2025-12-11T06:20:38.130831Z"
+  },
+  {
+    "id": 4,
+    "full_name": "Aitya Shukla",
+    "phone": "6260022536",
+    "email": "adityashukla9179@gmail.com",
+    "occupation": "student",
+    "password": "12345678",
+    "created_at": "2025-12-17T02:38:54.937167Z"
+  }
+]

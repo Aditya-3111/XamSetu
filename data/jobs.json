@@ -1,0 +1,5 @@
+[
+  {"id":1,"title":"Data Analyst","skills":["Python","SQL","Excel","Tableau"],"description":"Analyze data and prepare dashboards"},
+  {"id":2,"title":"Web Developer","skills":["HTML","CSS","JavaScript","React"],"description":"Develop web applications"},
+  {"id":3,"title":"ML Engineer","skills":["Python","TensorFlow","PyTorch"],"description":"Build ML models"}
+]

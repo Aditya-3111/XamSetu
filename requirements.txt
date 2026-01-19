@@ -1,0 +1,12 @@
+flask==3.0.2
+flask-cors==4.0.0
+werkzeug==3.0.1
+python-dotenv==1.0.1
+gunicorn==21.2.0
+
+# For file uploads & secure filename
+itsdangerous==2.1.2
+
+
+# Utility
+requests==2.31.0

@@ -1,0 +1,821 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Dashboard — XamSetu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --brand: #5a2d82;
+      --brand-2: #7a42a6;
+    }
+    
+    * {
+      transition-property: color, background-color, border-color, transform, box-shadow, opacity;
+      transition-duration: 200ms;
+      transition-timing-function: ease-in-out;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    
+    .pulse-ring {
+      animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .sidebar-open {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .overlay-enter {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    /* Chat bot styles */
+    .chat-window {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 640px) {
+      .chat-window {
+        max-height: 400px;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 antialiased">
+
+  <!-- Mobile Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="fixed left-0 top-0 z-40 h-screen w-64 bg-white border-r border-gray-200 
+                               transform -translate-x-full lg:translate-x-0 transition-transform duration-300 shadow-xl lg:shadow-none">
+    <div class="flex flex-col h-full">
+      
+      <!-- Logo with Close Button -->
+      <div class="px-6 py-6 border-b border-gray-200">
+        <div class="flex items-center justify-between">
+          <a href="/" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)]
+                        text-white font-extrabold flex items-center justify-center shadow-lg">
+              XS
+            </div>
+            <div>
+              <div class="text-lg font-bold text-[var(--brand)]">XamSetu</div>
+              <div class="text-xs text-gray-500 -mt-0.5">Dashboard</div>
+            </div>
+          </a>
+          <button id="closeSidebar" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+        <a href="#overview" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg bg-purple-50 text-[var(--brand)] font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          <span>Overview</span>
+        </a>
+        
+        <a href="#courses" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+          <span>My Courses</span>
+        </a>
+
+        <a href="#jobs" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>Job Openings</span>
+        </a>
+
+        <a href="#exams" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          <span>Exams</span>
+        </a>
+
+        <a href="https://ats100.vercel.app/pro" target="_blank" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          <span>Resume Alchemy</span>
+          <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+
+        <button id="uploadResumeBtn" class="nav-link w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+          </svg>
+          <span>Upload Resume</span>
+        </button>
+
+        <a href="#contact" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>Contact Us</span>
+        </a>
+      </nav>
+
+      <!-- User Profile -->
+      <div class="px-4 py-4 border-t border-gray-200">
+        <div class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 cursor-pointer">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)] 
+                    text-white font-bold flex items-center justify-center">
+            {{ user.full_name[0] }}{{ user.full_name.split(' ')[1][0] if user.full_name.split(' ')|length > 1 else '' }}
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="text-sm font-semibold text-gray-900 truncate">{{ user.full_name }}</div>
+            <div class="text-xs text-gray-500 truncate">{{ user.occupation }}</div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="lg:ml-64">
+    
+    <!-- TOP NAVBAR -->
+    <header class="sticky top-0 z-20 bg-white border-b border-gray-200 shadow-sm">
+      <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+        
+        <!-- Menu Toggle (Mobile) -->
+        <button id="menuToggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 -ml-2">
+          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Logo on Mobile -->
+        <div class="lg:hidden flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)]
+                      text-white font-extrabold flex items-center justify-center text-sm">
+            XS
+          </div>
+          <span class="text-base font-bold text-[var(--brand)]">XamSetu</span>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="hidden sm:block flex-1 max-w-xl mx-4">
+          <div class="relative">
+            <input 
+              type="text" 
+              placeholder="Search courses, jobs, exams..."
+              class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
+                     focus:ring-[var(--brand)] focus:border-transparent outline-none text-sm"
+            />
+            <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" 
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button class="p-2 rounded-lg hover:bg-gray-100 relative">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></span>
+          </button>
+          
+          <a href="/logout" 
+             class="hidden sm:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] 
+                    text-white rounded-lg font-medium hover:shadow-lg text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+            </svg>
+            <span>Logout</span>
+          </a>
+
+          <!-- Mobile Logout -->
+          <a href="/logout" class="sm:hidden p-2 rounded-lg hover:bg-gray-100">
+            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Search -->
+      <div class="sm:hidden px-4 pb-3">
+        <div class="relative">
+          <input 
+            type="text" 
+            placeholder="Search..."
+            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
+                   focus:ring-[var(--brand)] focus:border-transparent outline-none text-sm"
+          />
+          <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" 
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- DASHBOARD CONTENT -->
+    <main class="px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24">
+      
+      <!-- Welcome Section -->
+      <div class="mb-6 sm:mb-8">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+  Welcome back, {{ user.full_name.split(' ')[0] }}! 👋
+</h1>
+        <p class="text-sm sm:text-base text-gray-600">Here's what's happening with your learning journey today.</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+        <div class="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+          <div class="flex items-center justify-between mb-3 sm:mb-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-100 flex items-center justify-center">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <span class="text-xs font-medium text-green-600">+12%</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">8</h3>
+          <p class="text-xs sm:text-sm text-gray-600">Active Courses</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+          <div class="flex items-center justify-between mb-3 sm:mb-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-purple-100 flex items-center justify-center">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <span class="text-xs font-medium text-green-600">+5</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">24</h3>
+          <p class="text-xs sm:text-sm text-gray-600">Job Matches</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+          <div class="flex items-center justify-between mb-3 sm:mb-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-orange-100 flex items-center justify-center">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <span class="text-xs font-medium text-red-600">3 Soon</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">5</h3>
+          <p class="text-xs sm:text-sm text-gray-600">Exams</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+          <div class="flex items-center justify-between mb-3 sm:mb-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-green-100 flex items-center justify-center">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <span class="text-xs font-medium text-green-600">85%</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">12</h3>
+          <p class="text-xs sm:text-sm text-gray-600">Completed</p>
+        </div>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Left Column -->
+        <div class="lg:col-span-2 space-y-6 sm:space-y-8">
+          
+          <!-- Recommended Courses -->
+          <section id="courses">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-lg sm:text-xl font-bold text-gray-900">Recommended Courses</h2>
+              <a href="#" class="text-xs sm:text-sm text-[var(--brand)] font-medium hover:underline">View All</a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="h-32 sm:h-40 bg-gradient-to-br from-blue-500 to-purple-600"></div>
+                <div class="p-4 sm:p-5">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded">Programming</span>
+                    <span class="text-xs text-gray-500">12 weeks</span>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2 text-sm sm:text-base">Full Stack Web Development</h3>
+                  <p class="text-xs sm:text-sm text-gray-600 mb-4">Master modern web development with React, Node.js, and databases.</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full bg-gray-300 border-2 border-white"></div>
+                        <div class="w-6 h-6 rounded-full bg-gray-400 border-2 border-white"></div>
+                        <div class="w-6 h-6 rounded-full bg-gray-500 border-2 border-white"></div>
+                      </div>
+                      <span class="text-xs text-gray-600">1.2k</span>
+                    </div>
+                    <button class="px-3 sm:px-4 py-1.5 sm:py-2 bg-[var(--brand)] text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-[var(--brand-2)]">
+                      Enroll
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="h-32 sm:h-40 bg-gradient-to-br from-green-500 to-teal-600"></div>
+                <div class="p-4 sm:p-5">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded">Data Science</span>
+                    <span class="text-xs text-gray-500">10 weeks</span>
+                  </div>
+                  <h3 class="font-bold text-gray-900 mb-2 text-sm sm:text-base">Python for Data Analysis</h3>
+                  <p class="text-xs sm:text-sm text-gray-600 mb-4">Learn data analysis, visualization, and machine learning basics.</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full bg-gray-300 border-2 border-white"></div>
+                        <div class="w-6 h-6 rounded-full bg-gray-400 border-2 border-white"></div>
+                      </div>
+                      <span class="text-xs text-gray-600">856</span>
+                    </div>
+                    <button class="px-3 sm:px-4 py-1.5 sm:py-2 bg-[var(--brand)] text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-[var(--brand-2)]">
+                      Enroll
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Job Openings -->
+          <section id="jobs">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-lg sm:text-xl font-bold text-gray-900">Matched Job Openings</h2>
+              <a href="#" class="text-xs sm:text-sm text-[var(--brand)] font-medium hover:underline">View All</a>
+            </div>
+            
+            <div class="bg-white rounded-xl border border-gray-200 divide-y divide-gray-200">
+              <div class="p-4 sm:p-5 hover:bg-gray-50 transition-colors">
+                <div class="flex flex-col sm:flex-row items-start justify-between gap-4">
+                  <div class="flex-1 w-full">
+                    <div class="flex items-center gap-3 mb-2">
+                      <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                        <span class="text-base sm:text-lg font-bold text-blue-600">G</span>
+                      </div>
+                      <div>
+                        <h3 class="font-bold text-gray-900 text-sm sm:text-base">Frontend Developer</h3>
+                        <p class="text-xs sm:text-sm text-gray-600">Google Inc.</p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                      <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Remote</span>
+                      <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Full-time</span>
+                      <span class="text-xs text-gray-500">• 2 days ago</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 mb-3">Looking for a skilled frontend developer with React experience...</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
+                      <span>💰 $80k - $120k/year</span>
+                      <span>📍 Bangalore, India</span>
+                    </div>
+                  </div>
+                  <button class="w-full sm:w-auto px-4 py-2 bg-[var(--brand)] text-white text-sm font-medium rounded-lg hover:bg-[var(--brand-2)] flex-shrink-0">
+                    Apply Now
+                  </button>
+                </div>
+              </div>
+
+              <div class="p-4 sm:p-5 hover:bg-gray-50 transition-colors">
+                <div class="flex flex-col sm:flex-row items-start justify-between gap-4">
+                  <div class="flex-1 w-full">
+                    <div class="flex items-center gap-3 mb-2">
+                      <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
+                        <span class="text-base sm:text-lg font-bold text-purple-600">M</span>
+                      </div>
+                      <div>
+                        <h3 class="font-bold text-gray-900 text-sm sm:text-base">Data Analyst</h3>
+                        <p class="text-xs sm:text-sm text-gray-600">Microsoft</p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                      <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Hybrid</span>
+                      <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Full-time</span>
+                      <span class="text-xs text-gray-500">• 5 days ago</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 mb-3">Seeking data analyst with Python and SQL expertise...</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
+                      <span>💰 $70k - $100k/year</span>
+                      <span>📍 Hyderabad, India</span>
+                    </div>
+                  </div>
+                  <button class="w-full sm:w-auto px-4 py-2 bg-[var(--brand)] text-white text-sm font-medium rounded-lg hover:bg-[var(--brand-2)] flex-shrink-0">
+                    Apply Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Upcoming Exams -->
+          <section id="exams">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-lg sm:text-xl font-bold text-gray-900">Upcoming Exams</h2>
+              <a href="#" class="text-xs sm:text-sm text-[var(--brand)] font-medium hover:underline">View All</a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-white rounded-xl border border-gray-200 p-4 sm:p-5 hover:shadow-lg transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-orange-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-gray-900 text-sm sm:text-base">JEE Advanced 2025</h3>
+                    <p class="text-xs text-gray-600">Engineering Entrance</p>
+                  </div>
+                </div>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center justify-between text-xs sm:text-sm">
+                    <span class="text-gray-600">Date:</span>
+                    <span class="font-medium text-gray-900">May 18, 2025</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs sm:text-sm">
+                    <span class="text-gray-600">Time:</span>
+                    <span class="font-medium text-gray-900">9:00 AM - 12:00 PM</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs sm:text-sm">
+                    <span class="text-gray-600">Status:</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded">Registered</span>
+                  </div>
+                </div>
+                <button class="w-full px-4 py-2 border border-[var(--brand)] text-[var(--brand)] text-sm font-medium rounded-lg hover:bg-purple-50">
+                  View Details
+                </button>
+              </div>
+
+              <div class="bg-white rounded-xl border border-gray-200 p-4 sm:p-5 hover:shadow-lg transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-gray-900 text-sm sm:text-base">NEET 2025</h3>
+                    <p class="text-xs text-gray-600">Medical Entrance</p>
+                  </div>
+                </div>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center justify-between text-xs sm:text-sm">
+                    <span class="text-gray-600">Date:</span>
+                    <span class="font-medium text-gray-900">June 5, 2025</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs sm:text-sm">
+                    <span class="text-gray-600">Time:</span>
+                    <span class="font-medium text-gray-900">2:00 PM - 5:00 PM</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs sm:text-sm">
+                    <span class="text-gray-600">Status:</span>
+                    <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs font-medium rounded">Pending</span>
+                  </div>
+                </div>
+                <button class="w-full px-4 py-2 border border-[var(--brand)] text-[var(--brand)] text-sm font-medium rounded-lg hover:bg-purple-50">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column - Activity Feed -->
+        <div class="space-y-6 sm:space-y-8">
+          <section>
+            <h2 class="text-lg sm:text-xl font-bold text-gray-900 mb-4">Recent Activity</h2>
+            <div class="bg-white rounded-xl border border-gray-200 divide-y divide-gray-200">
+              <div class="p-4">
+                <div class="flex gap-3">
+                  <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-sm text-gray-900 mb-1">Completed <strong>Module 3</strong> in Web Development</p>
+                    <p class="text-xs text-gray-500">2 hours ago</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-4">
+                <div class="flex gap-3">
+                  <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-sm text-gray-900 mb-1">Quiz score: <strong>95%</strong> in Data Structures</p>
+                    <p class="text-xs text-gray-500">5 hours ago</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-4">
+                <div class="flex gap-3">
+                  <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-sm text-gray-900 mb-1">Applied to <strong>3 new jobs</strong></p>
+                    <p class="text-xs text-gray-500">Yesterday</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Floating Chat Bot -->
+  <div id="chatBot" class="fixed bottom-6 right-6 z-50">
+    <!-- Chat Button -->
+    <button id="chatToggle" class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)] 
+                                   rounded-full shadow-lg hover:shadow-xl flex items-center justify-center
+                                   text-white transition-all hover:scale-110 float-animation">
+      <svg id="chatIcon" class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+      </svg>
+      <svg id="closeIcon" class="w-6 h-6 sm:w-7 sm:h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+      <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white"></span>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chatWindow" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl 
+                                border border-gray-200 overflow-hidden">
+      <!-- Chat Header -->
+      <div class="bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] p-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-white font-bold">XamSetu Assistant</h3>
+            <p class="text-white text-xs opacity-90">Online • Here to help</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div id="chatMessages" class="chat-window p-4 bg-gray-50">
+        <div class="flex gap-2 mb-4">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)] flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <div class="bg-white rounded-lg rounded-tl-none p-3 shadow-sm">
+              <p class="text-sm text-gray-800">👋 Hi! I'm your XamSetu assistant. How can I help you today?</p>
+            </div>
+            <p class="text-xs text-gray-500 mt-1">Just now</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button class="p-3 bg-white rounded-lg border border-gray-200 hover:border-[var(--brand)] 
+                         hover:bg-purple-50 transition-all text-left">
+            <p class="text-sm font-medium text-gray-900">📚 Find Courses</p>
+          </button>
+          <button class="p-3 bg-white rounded-lg border border-gray-200 hover:border-[var(--brand)] 
+                         hover:bg-purple-50 transition-all text-left">
+            <p class="text-sm font-medium text-gray-900">💼 Job Search</p>
+          </button>
+          <button class="p-3 bg-white rounded-lg border border-gray-200 hover:border-[var(--brand)] 
+                         hover:bg-purple-50 transition-all text-left">
+            <p class="text-sm font-medium text-gray-900">📝 Exam Info</p>
+          </button>
+          <button class="p-3 bg-white rounded-lg border border-gray-200 hover:border-[var(--brand)] 
+                         hover:bg-purple-50 transition-all text-left">
+            <p class="text-sm font-medium text-gray-900">❓ Get Help</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="p-4 border-t border-gray-200 bg-white">
+        <div class="flex gap-2">
+          <input 
+            type="text" 
+            placeholder="Type your message..."
+            class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:ring-2 
+                   focus:ring-[var(--brand)] focus:border-transparent outline-none text-sm"
+          />
+          <button class="w-10 h-10 bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)] 
+                         rounded-full flex items-center justify-center hover:shadow-lg transition-all">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume Upload Modal -->
+  <div id="uploadModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-bold text-gray-900">Upload Your Resume</h3>
+        <button id="closeModal" class="p-2 rounded-lg hover:bg-gray-100">
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-[var(--brand)] transition-colors cursor-pointer">
+        <input type="file" id="resumeInput" accept=".pdf,.doc,.docx" class="hidden" />
+        <label for="resumeInput" class="cursor-pointer">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-[var(--brand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+          </div>
+          <p class="text-gray-900 font-medium mb-1">Click to upload or drag and drop</p>
+          <p class="text-sm text-gray-500">PDF, DOC, or DOCX (max. 5MB)</p>
+        </label>
+      </div>
+
+      <div class="mt-6 flex gap-3">
+        <button id="cancelUpload" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50">
+          Cancel
+        </button>
+        <button class="flex-1 px-4 py-2 bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] text-white rounded-lg font-medium hover:shadow-lg">
+          Upload
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sidebar Toggle
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const menuToggle = document.getElementById('menuToggle');
+    const closeSidebar = document.getElementById('closeSidebar');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('sidebar-open');
+      overlay.classList.remove('hidden');
+      overlay.classList.add('overlay-enter');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    });
+
+    // Close sidebar when clicking nav links on mobile
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.add('-translate-x-full');
+          overlay.classList.add('hidden');
+        }
+      });
+    });
+
+    // Chat Bot Toggle
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatIcon = document.getElementById('chatIcon');
+    const closeIcon = document.getElementById('closeIcon');
+
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('hidden');
+      chatIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    // Resume Upload Modal
+    const uploadResumeBtn = document.getElementById('uploadResumeBtn');
+    const uploadModal = document.getElementById('uploadModal');
+    const closeModal = document.getElementById('closeModal');
+    const cancelUpload = document.getElementById('cancelUpload');
+    const resumeInput = document.getElementById('resumeInput');
+
+    uploadResumeBtn.addEventListener('click', () => {
+      uploadModal.classList.remove('hidden');
+    });
+
+    closeModal.addEventListener('click', () => {
+      uploadModal.classList.add('hidden');
+    });
+
+    cancelUpload.addEventListener('click', () => {
+      uploadModal.classList.add('hidden');
+    });
+
+    uploadModal.addEventListener('click', (e) => {
+      if (e.target === uploadModal) {
+        uploadModal.classList.add('hidden');
+      }
+    });
+
+    resumeInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        const file = e.target.files[0];
+        console.log('File selected:', file.name);
+        // Handle file upload here
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

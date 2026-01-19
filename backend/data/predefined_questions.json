@@ -1,0 +1,258 @@
+[
+  {
+    "id": 1,
+    "question": "What job can I get with Python skills?",
+    "answer": "With Python skills, you can apply for roles such as Data Analyst, Python Developer, Automation Engineer, Machine Learning Engineer, Backend Developer, or Scripting Specialist. Python is highly in-demand across industries."
+  },
+  {
+    "id": 2,
+    "question": "How do I start preparing for the Data Analyst role?",
+    "answer": "To become a Data Analyst, learn: 1) Excel basics, 2) SQL queries, 3) Python for data analysis, 4) Visualization tools (Tableau/Power BI), 5) Complete 2-3 projects such as Sales Dashboard or Customer Segmentation."
+  },
+  {
+    "id": 3,
+    "question": "What is the best roadmap to become a software developer?",
+    "answer": "1) Learn basic programming (Python/Java). 2) Master DSA. 3) Learn web development basics. 4) Build 3 projects. 5) Learn Git/GitHub. 6) Prepare for interviews with 100 coding questions."
+  },
+  {
+    "id": 4,
+    "question": "How many hours should I study daily for competitive exams?",
+    "answer": "On average, study 3–4 focused hours daily. Break it into 50-minute study sessions with 10-minute breaks. Consistency is more important than long study hours."
+  },
+  {
+    "id": 5,
+    "question": "How do I stay motivated for exams?",
+    "answer": "Set small daily goals, track progress, avoid distractions, study in short sessions, take breaks, revise weekly, and follow a fixed timetable. Motivation comes from consistent progress."
+  },
+  {
+    "id": 6,
+    "question": "What are the best high-paying IT jobs in 2025?",
+    "answer": "Top-paying tech roles include: Cloud Engineer, AI/ML Engineer, Cybersecurity Analyst, DevOps Engineer, Blockchain Developer, Data Scientist, and Full-Stack Developer."
+  },
+  {
+    "id": 7,
+    "question": "How do I prepare for coding interviews?",
+    "answer": "Follow this plan: 1) Learn DSA basics, 2) Solve 100 coding questions, 3) Understand time complexity, 4) Build 2 projects, 5) Practice mock interviews, 6) Study system design basics."
+  },
+  {
+    "id": 8,
+    "question": "What is Machine Learning in simple words?",
+    "answer": "Machine Learning is a technology that allows computers to learn from data and make decisions or predictions without being explicitly programmed."
+  },
+  {
+    "id": 9,
+    "question": "What courses should I take to get a good job in IT?",
+    "answer": "Top job-oriented courses: Data Analytics, Cloud Computing, Cybersecurity, Python Programming, Web Development, Artificial Intelligence, and UI/UX Design."
+  },
+  {
+    "id": 10,
+    "question": "How do I improve my English for exams?",
+    "answer": "Read English newspapers, practice vocabulary daily, take grammar quizzes, watch English videos, and speak with friends regularly."
+  },
+
+  {
+    "id": 11,
+    "question": "How can I score full marks in Maths?",
+    "answer": "Practice daily, revise formulas, solve previous-year papers, understand concepts instead of memorizing, and attempt mock tests weekly."
+  },
+  {
+    "id": 12,
+    "question": "How do I create a resume with no experience?",
+    "answer": "Focus on: Skills, Certifications, Academic projects, Internships, Achievements, and a clean professional design. Employers look for potential, not just experience."
+  },
+  {
+    "id": 13,
+    "question": "Which programming language should I learn first?",
+    "answer": "Start with Python because it is easy, widely used, and suitable for beginners. Later, you can learn Java or JavaScript."
+  },
+  {
+    "id": 14,
+    "question": "How can I become a Data Scientist?",
+    "answer": "Learn Python, Statistics, Machine Learning, SQL, Data Visualization, and complete real-world projects like prediction models and dashboards."
+  },
+  {
+    "id": 15,
+    "question": "How do I reduce exam stress?",
+    "answer": "Take regular breaks, follow a study schedule, exercise lightly, meditate for 10 minutes daily, and avoid last-minute studying."
+  },
+  {
+    "id": 16,
+    "question": "Are online courses helpful for jobs?",
+    "answer": "Yes. If you gain practical project experience and strong skills, employers value online certifications from Coursera, Udemy, and Google Career Certificates."
+  },
+  {
+    "id": 17,
+    "question": "How do I prepare for an aptitude test?",
+    "answer": "Practice Quantitative Aptitude, Reasoning, and Verbal topics daily. Use mock tests, time-bound quizzes, and shortcut tricks to improve speed."
+  },
+  {
+    "id": 18,
+    "question": "What skills are required for web development?",
+    "answer": "HTML, CSS, JavaScript, React.js, Git/GitHub, APIs, and basic backend knowledge such as Node.js or Python Flask."
+  },
+  {
+    "id": 19,
+    "question": "How do I choose the right career?",
+    "answer": "Identify your interests, assess skills, explore job trends, check salary growth, talk to mentors, and take career assessment tests."
+  },
+  {
+    "id": 20,
+    "question": "Which government exams are best after graduation?",
+    "answer": "Top options: SSC CGL, UPSC Civil Services, Banking (IBPS, SBI), Railways, State PSC, and Defence exams like CDS."
+  },
+
+  {
+    "id": 21,
+    "question": "How do I study effectively for long hours?",
+    "answer": "Follow the Pomodoro technique, take breaks, avoid multitasking, stay hydrated, and keep your study area clean."
+  },
+  {
+    "id": 22,
+    "question": "What is the best 30-day Python learning plan?",
+    "answer": "Week 1: Basics & syntax. Week 2: OOP & file handling. Week 3: Libraries (NumPy, Pandas). Week 4: Mini project + interview prep."
+  },
+  {
+    "id": 23,
+    "question": "How do I get my first internship?",
+    "answer": "Make a clean resume, complete 2–3 small projects, apply on LinkedIn/Internshala, and send personalized messages to recruiters."
+  },
+  {
+    "id": 24,
+    "question": "What are the best soft skills for students?",
+    "answer": "Communication, teamwork, problem-solving, time management, leadership, and adaptability."
+  },
+  {
+    "id": 25,
+    "question": "How do I crack SSC CGL?",
+    "answer": "Study Maths + Reasoning daily, revise GK weekly, solve previous papers, and practice mock tests regularly."
+  },
+  {
+    "id": 26,
+    "question": "Which course is best after 12th for high salary?",
+    "answer": "B.Tech, BBA + MBA, BCA, Data Science, Cybersecurity, and UI/UX are strong high-paying career paths."
+  },
+  {
+    "id": 27,
+    "question": "How do I create a study timetable?",
+    "answer": "Divide subjects into daily blocks, add revision sessions every weekend, and track your progress weekly."
+  },
+  {
+    "id": 28,
+    "question": "How do I memorize fast?",
+    "answer": "Use mind maps, visualization, active recall, spaced repetition, and teach concepts to someone else."
+  },
+  {
+    "id": 29,
+    "question": "Can I switch to IT without a coding background?",
+    "answer": "Yes! Start with Python, basic web development, or data analytics. Non-coders often transition successfully with consistent practice."
+  },
+  {
+    "id": 30,
+    "question": "How do I become a freelancer?",
+    "answer": "Learn a skill, build a portfolio, create Fiverr/Upwork accounts, start with small gigs, and collect client reviews."
+
+  },
+
+  {
+    "id": 31,
+    "question": "What is the best way to revise for exams?",
+    "answer": "Use active recall, solve previous questions, revise weekly, summarize notes, and create quick flashcards."
+  },
+  {
+    "id": 32,
+    "question": "Which technology has the most future scope?",
+    "answer": "Artificial Intelligence, Cloud Computing, Cybersecurity, Blockchain, and AR/VR are the fastest-growing technologies."
+  },
+  {
+    "id": 33,
+    "question": "How do I overcome procrastination?",
+    "answer": "Break tasks into small chunks, set deadlines, avoid distractions, and reward yourself after completing tasks."
+  },
+  {
+    "id": 34,
+    "question": "How do I start learning AI?",
+    "answer": "Learn Python → Math basics → ML algorithms → Deep learning → Projects. Follow hands-on tutorials and Kaggle competitions."
+  },
+  {
+    "id": 35,
+    "question": "What is SQL used for?",
+    "answer": "SQL helps query, manage, and analyze data in databases. It is essential for Data Analysts, Developers, and ML Engineers."
+  },
+  {
+    "id": 36,
+    "question": "How can I prepare for campus placements?",
+    "answer": "Prepare DSA, Aptitude, Verbal skills, resume building, and mock interviews. Also work on real projects and internships."
+  },
+  {
+    "id": 37,
+    "question": "How do I learn faster?",
+    "answer": "Study in short bursts, take handwritten notes, explain topics to others, and revise regularly."
+  },
+  {
+    "id": 38,
+    "question": "What are the best certifications for students?",
+    "answer": "Google Data Analytics, AWS Cloud Practitioner, Microsoft Azure, Coursera ML, and Meta Frontend Developer."
+  },
+  {
+    "id": 39,
+    "question": "Which IT field is best for beginners?",
+    "answer": "Web development, Data Analytics, QA testing, and Cloud fundamentals are great for beginners."
+  },
+  {
+    "id": 40,
+    "question": "How do I prepare for banking exams?",
+    "answer": "Practice Quant, Reasoning, and English daily. Follow previous papers and mock tests regularly."
+
+  },
+
+  {
+    "id": 41,
+    "question": "What are the best skills to learn in 2025?",
+    "answer": "AI, Cloud computing, Cybersecurity, Data Analytics, Blockchain, and UI/UX Design."
+  },
+  {
+    "id": 42,
+    "question": "How do I reduce distractions while studying?",
+    "answer": "Keep your phone away, use study apps, keep your desk clean, and follow fixed study hours."
+  },
+  {
+    "id": 43,
+    "question": "What is a good project for a beginner?",
+    "answer": "Build a calculator, to-do app, portfolio website, or basic data visualization project."
+  },
+  {
+    "id": 44,
+    "question": "How do I manage time during exams?",
+    "answer": "Solve easy questions first, avoid overthinking, set a pace per question, and keep 15 minutes for revision."
+  },
+  {
+    "id": 45,
+    "question": "How can I improve general knowledge?",
+    "answer": "Read newspapers, watch news summaries, use GK apps, and solve quiz sets daily."
+  },
+  {
+    "id": 46,
+    "question": "Which laptop is best for programming?",
+    "answer": "Choose a laptop with at least i5/Ryzen 5, 8GB RAM, 256GB SSD, and a good keyboard."
+  },
+  {
+    "id": 47,
+    "question": "How do I get a remote job?",
+    "answer": "Build strong skills, update your resume, create LinkedIn profile, and apply through remote job portals."
+  },
+  {
+    "id": 48,
+    "question": "How do I improve communication skills?",
+    "answer": "Read aloud daily, record your voice, talk to people, learn vocabulary, and practice speaking confidently."
+  },
+  {
+    "id": 49,
+    "question": "How do I prepare for GATE exam?",
+    "answer": "Study core subjects, solve standard books, complete previous papers, take mock tests, and revise concepts weekly."
+  },
+  {
+    "id": 50,
+    "question": "How can I learn coding without coaching?",
+    "answer": "Follow YouTube tutorials, practice on coding platforms, build small projects, and study consistently every day."
+  }
+]

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white p-6 rounded shadow">
+  <h2 class="font-semibold">Curated Free Resources</h2>
+  <div class="mt-4 space-y-3">
+    {% for r in resources %}
+      <div class="p-3 border rounded">
+        <div class="font-semibold">{{ r.title }}</div>
+        <div class="text-sm text-slate-600">{{ r.topic }} • Rating: {{ r.rating }}</div>
+        <a class="text-indigo-600" href="{{ r.url }}" target="_blank">Open resource</a>
+      </div>
+    {% else %}
+      <div class="text-slate-500">No resources found.</div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,870 @@
+[
+  {
+    "user_id": 1,
+    "message": "hi bot what do you can offer",
+    "role": "user",
+    "id": 1,
+    "created_at": "2025-10-31T14:21:52.389452Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 2,
+    "created_at": "2025-10-31T14:21:52.397450Z"
+  },
+  {
+    "user_id": 1,
+    "message": "how i can upload resume",
+    "role": "user",
+    "id": 3,
+    "created_at": "2025-10-31T14:22:11.755682Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 4,
+    "created_at": "2025-10-31T14:22:11.778314Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Recommend a roadmap for Data Analyst'",
+    "role": "user",
+    "id": 5,
+    "created_at": "2025-10-31T14:22:24.913506Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Tell me the skills you have (e.g., Python, SQL) so I can build a roadmap.",
+    "role": "bot",
+    "id": 6,
+    "created_at": "2025-10-31T14:22:24.943556Z"
+  },
+  {
+    "user_id": 1,
+    "message": "python sql database mangement",
+    "role": "user",
+    "id": 7,
+    "created_at": "2025-10-31T14:22:39.389644Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 8,
+    "created_at": "2025-10-31T14:22:39.407844Z"
+  },
+  {
+    "user_id": 1,
+    "message": "what role can i do",
+    "role": "user",
+    "id": 9,
+    "created_at": "2025-10-31T14:25:56.464849Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 10,
+    "created_at": "2025-10-31T14:25:56.482320Z"
+  },
+  {
+    "user_id": 1,
+    "message": "ecommend a roadmap for Data Analyst",
+    "role": "user",
+    "id": 11,
+    "created_at": "2025-10-31T14:26:09.575844Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Tell me the skills you have (e.g., Python, SQL) so I can build a roadmap.",
+    "role": "bot",
+    "id": 12,
+    "created_at": "2025-10-31T14:26:09.575844Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Python",
+    "role": "user",
+    "id": 13,
+    "created_at": "2025-10-31T14:26:17.548253Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 14,
+    "created_at": "2025-10-31T14:26:17.562938Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What job can I do with Python and SQL",
+    "role": "user",
+    "id": 15,
+    "created_at": "2025-10-31T14:26:28.274414Z"
+  },
+  {
+    "user_id": 1,
+    "message": "I found these possible roles:\nData Analyst — 50% match. Matched: Python, SQL. Missing: Excel, Tableau.\nML Engineer — 33% match. Matched: Python. Missing: TensorFlow, PyTorch.\nWeb Developer — 0% match. Matched: None. Missing: HTML, CSS, JavaScript, React.",
+    "role": "bot",
+    "id": 16,
+    "created_at": "2025-10-31T14:26:28.320257Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "user",
+    "id": 17,
+    "created_at": "2025-11-04T06:12:48.614746Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 18,
+    "created_at": "2025-11-04T06:12:48.633870Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "user",
+    "id": 19,
+    "created_at": "2025-11-11T07:52:12.069891Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 20,
+    "created_at": "2025-11-11T07:52:12.094973Z"
+  },
+  {
+    "user_id": 1,
+    "message": "'Recommend a roadmap for Data Analys",
+    "role": "user",
+    "id": 21,
+    "created_at": "2025-11-11T07:52:32.778975Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Tell me the skills you have (e.g., Python, SQL) so I can build a roadmap.",
+    "role": "bot",
+    "id": 22,
+    "created_at": "2025-11-11T07:52:32.794277Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Python",
+    "role": "user",
+    "id": 23,
+    "created_at": "2025-11-11T07:52:44.234922Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 24,
+    "created_at": "2025-11-11T07:52:44.248158Z"
+  },
+  {
+    "user_id": 1,
+    "message": "ergergf",
+    "role": "user",
+    "id": 25,
+    "created_at": "2025-11-11T07:52:48.725785Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 26,
+    "created_at": "2025-11-11T07:52:48.737050Z"
+  },
+  {
+    "user_id": 1,
+    "message": "erer",
+    "role": "user",
+    "id": 27,
+    "created_at": "2025-11-11T07:52:50.191627Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 28,
+    "created_at": "2025-11-11T07:52:50.204264Z"
+  },
+  {
+    "user_id": 1,
+    "message": "rgthyh",
+    "role": "user",
+    "id": 29,
+    "created_at": "2025-11-11T07:52:51.412018Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 30,
+    "created_at": "2025-11-11T07:52:51.424061Z"
+  },
+  {
+    "user_id": 1,
+    "message": "aefargvtb tbrt",
+    "role": "user",
+    "id": 31,
+    "created_at": "2025-11-11T07:52:53.784969Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 32,
+    "created_at": "2025-11-11T07:52:53.804971Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What job can I do with Python?",
+    "role": "user",
+    "id": 33,
+    "created_at": "2025-11-12T05:09:18.352068Z"
+  },
+  {
+    "user_id": 1,
+    "message": "I found these possible roles:\nML Engineer — 33% match. Matched: Python. Missing: TensorFlow, PyTorch.\nData Analyst — 25% match. Matched: Python. Missing: SQL, Excel, Tableau.\nWeb Developer — 0% match. Matched: None. Missing: HTML, CSS, JavaScript, React.",
+    "role": "bot",
+    "id": 34,
+    "created_at": "2025-11-12T05:09:18.384930Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "user",
+    "id": 35,
+    "created_at": "2025-11-14T17:34:39.787932Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 36,
+    "created_at": "2025-11-14T17:34:39.807524Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "user",
+    "id": 37,
+    "created_at": "2025-11-14T17:35:00.949285Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 38,
+    "created_at": "2025-11-14T17:35:00.977819Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hi",
+    "role": "user",
+    "id": 39,
+    "created_at": "2025-11-18T03:59:51.344978Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hello! I'm XamBot. Try:\n- 'What job can I do with Python and SQL?'\n- 'Recommend a roadmap for Data Analyst'\n             - Upload your resume and ask 'what job?'",
+    "role": "bot",
+    "id": 40,
+    "created_at": "2025-11-18T03:59:51.356154Z"
+  },
+  {
+    "user_id": 1,
+    "role": "user",
+    "message": "what is ssc exam",
+    "id": 41,
+    "created_at": "2025-12-04T09:40:14.297907Z"
+  },
+  {
+    "user_id": 1,
+    "role": "user",
+    "message": "hi",
+    "id": 42,
+    "created_at": "2025-12-04T09:41:06.027778Z"
+  },
+  {
+    "user_id": 1,
+    "role": "user",
+    "message": "hi",
+    "id": 43,
+    "created_at": "2025-12-04T09:42:33.547210Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "user",
+    "id": 44,
+    "created_at": "2025-12-04T10:14:01.059164Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi lt 3",
+    "role": "bot",
+    "id": 45,
+    "created_at": "2025-12-04T10:14:01.821756Z"
+  },
+  {
+    "user_id": 1,
+    "message": "what is ssc exam",
+    "role": "user",
+    "id": 46,
+    "created_at": "2025-12-04T10:14:12.482866Z"
+  },
+  {
+    "user_id": 1,
+    "message": "it was a sc",
+    "role": "bot",
+    "id": 47,
+    "created_at": "2025-12-04T10:14:13.207266Z"
+  },
+  {
+    "user_id": 1,
+    "message": "ok",
+    "role": "user",
+    "id": 48,
+    "created_at": "2025-12-04T10:14:18.929216Z"
+  },
+  {
+    "user_id": 1,
+    "message": "how about that you?",
+    "role": "bot",
+    "id": 49,
+    "created_at": "2025-12-04T10:14:19.805718Z"
+  },
+  {
+    "user_id": 1,
+    "message": "it job",
+    "role": "user",
+    "id": 50,
+    "created_at": "2025-12-04T10:14:33.130898Z"
+  },
+  {
+    "user_id": 1,
+    "message": "oh wow. I did not know it was that bad tbh, I thought I was just bad",
+    "role": "bot",
+    "id": 51,
+    "created_at": "2025-12-04T10:14:35.391742Z"
+  },
+  {
+    "user_id": 1,
+    "message": "how you work",
+    "role": "user",
+    "id": 52,
+    "created_at": "2025-12-04T10:15:07.093720Z"
+  },
+  {
+    "user_id": 1,
+    "message": "You mean work?",
+    "role": "bot",
+    "id": 53,
+    "created_at": "2025-12-04T10:15:07.820216Z"
+  },
+  {
+    "user_id": 1,
+    "message": "what is your technnology",
+    "role": "user",
+    "id": 54,
+    "created_at": "2025-12-04T10:15:24.531001Z"
+  },
+  {
+    "user_id": 1,
+    "message": "I do not like any of the ones that I listed!",
+    "role": "bot",
+    "id": 55,
+    "created_at": "2025-12-04T10:15:25.955223Z"
+  },
+  {
+    "user_id": 1,
+    "message": "what about your technology",
+    "role": "user",
+    "id": 56,
+    "created_at": "2025-12-04T10:16:43.292483Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What about your technology",
+    "role": "bot",
+    "id": 57,
+    "created_at": "2025-12-04T10:16:44.026449Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What job fits Python + SQL?",
+    "role": "user",
+    "id": 58,
+    "created_at": "2025-12-04T10:17:50.138702Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What job fits Python",
+    "role": "user",
+    "id": 59,
+    "created_at": "2025-12-04T10:19:07.677385Z"
+  },
+  {
+    "user_id": 1,
+    "message": "HTML', 'CSS', 'JavaScript', 'React",
+    "role": "user",
+    "id": 60,
+    "created_at": "2025-12-04T10:20:06.861245Z"
+  },
+  {
+    "user_id": 1,
+    "message": "haha : 3",
+    "role": "bot",
+    "id": 61,
+    "created_at": "2025-12-04T10:20:07.768109Z"
+  },
+  {
+    "user_id": 1,
+    "message": "{% extends \"base.html\" %} {% block content %} <div class=\"bg-white rounded shadow p-4 h-[70vh] flex flex-col\">   <div id=\"chatArea\" class=\"flex-1 overflow-auto border p-2 mb-2 rounded\"></div>   <form id=\"chatForm\" class=\"flex gap-2\">     <input id=\"chatInput\" class=\"flex-1 border rounded p-2\" placeholder=\"Ask XamBot anything...\" />     <button class=\"px-4 py-2 bg-indigo-600 text-white rounded\">Send</button>   </form> </div> <script> const chatForm=document.getElementById('chatForm'); const chatInput=document.getElementById('chatInput'); const chatArea=document.getElementById('chatArea'); function addMsg(who,text){   const el=document.createElement('div');   el.className=who==='user'?'text-right my-1':'text-left my-1';   el.innerHTML=`<div class=\"inline-block px-3 py-2 rounded ${who==='user'?'bg-indigo-600 text-white':'bg-slate-200 text-black'}\">${text.replace(/\\n/g,'<br>')}</div>`;   chatArea.appendChild(el);   chatArea.scrollTop=chatArea.scrollHeight; } chatForm.addEventListener('submit',async(e)=>{   e.preventDefault();   const msg=chatInput.value.trim();   if(!msg) return;   addMsg('user',msg);   chatInput.value='';   const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg,user_id:1})});   const j=await res.json();   if(j.ok){     addMsg('bot',j.reply);     if(j.jobs){       j.jobs.forEach(jj=>{         const links = jj.links.map(l=>`<div><a class=\"text-indigo-600\" target=\"_blank\" href=\"${l}\">${l}</a></div>`).join('');         addMsg('bot', `<b>${jj.title}</b><br>${links}`);       });     }   } else {     addMsg('bot','Sorry, something went wrong.');   } }); </script> {% endblock %}",
+    "role": "user",
+    "id": 62,
+    "created_at": "2025-12-04T10:22:02.390137Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "user",
+    "id": 63,
+    "created_at": "2025-12-04T10:27:57.545721Z"
+  },
+  {
+    "user_id": 1,
+    "message": "haha I'm not so good at Java. I can try my hand",
+    "role": "bot",
+    "id": 64,
+    "created_at": "2025-12-04T10:28:00.085573Z"
+  },
+  {
+    "user_id": 1,
+    "message": "your java code",
+    "role": "user",
+    "id": 65,
+    "created_at": "2025-12-04T10:28:14.702175Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "bot",
+    "id": 66,
+    "created_at": "2025-12-04T10:28:15.582849Z"
+  },
+  {
+    "user_id": 1,
+    "message": "give me your code",
+    "role": "user",
+    "id": 67,
+    "created_at": "2025-12-04T10:28:25.294219Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "bot",
+    "id": 68,
+    "created_at": "2025-12-04T10:28:26.171466Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "user",
+    "id": 69,
+    "created_at": "2025-12-04T10:28:31.843744Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "bot",
+    "id": 70,
+    "created_at": "2025-12-04T10:28:32.732563Z"
+  },
+  {
+    "user_id": 1,
+    "message": "hi",
+    "role": "user",
+    "id": 71,
+    "created_at": "2025-12-04T10:28:34.885207Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 72,
+    "created_at": "2025-12-04T10:28:35.618934Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is flask",
+    "role": "user",
+    "id": 73,
+    "created_at": "2025-12-04T10:34:44.016663Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 74,
+    "created_at": "2025-12-04T10:34:44.828491Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is python",
+    "role": "user",
+    "id": 75,
+    "created_at": "2025-12-04T10:36:00.571991Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 76,
+    "created_at": "2025-12-04T10:36:01.309558Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is python",
+    "role": "user",
+    "id": 77,
+    "created_at": "2025-12-04T10:36:12.277616Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 78,
+    "created_at": "2025-12-04T10:36:13.106853Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is python flask",
+    "role": "user",
+    "id": 79,
+    "created_at": "2025-12-04T10:37:18.644410Z"
+  },
+  {
+    "user_id": 1,
+    "message": "A tool. It's a program for python.",
+    "role": "bot",
+    "id": 80,
+    "created_at": "2025-12-04T10:37:20.259721Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Give me same example",
+    "role": "user",
+    "id": 81,
+    "created_at": "2025-12-04T10:37:36.471890Z"
+  },
+  {
+    "user_id": 1,
+    "message": "You just asked for an example, but you can try any program out for yourself if you want. That's not an example, it's a request.",
+    "role": "bot",
+    "id": 82,
+    "created_at": "2025-12-04T10:37:39.778731Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is python flask and HTML",
+    "role": "user",
+    "id": 83,
+    "created_at": "2025-12-04T10:39:00.478470Z"
+  },
+  {
+    "user_id": 1,
+    "message": "The name.",
+    "role": "bot",
+    "id": 84,
+    "created_at": "2025-12-04T10:39:01.202874Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Full form of HTML",
+    "role": "user",
+    "id": 85,
+    "created_at": "2025-12-04T10:39:16.153519Z"
+  },
+  {
+    "user_id": 1,
+    "message": "So, no. I'm not sure how you made that request, but your request is not even remotely close to a python flask.",
+    "role": "bot",
+    "id": 86,
+    "created_at": "2025-12-04T10:39:19.348596Z"
+  },
+  {
+    "user_id": 1,
+    "message": "HTTPS",
+    "role": "user",
+    "id": 87,
+    "created_at": "2025-12-04T10:40:19.124685Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Not sure where to go now.",
+    "role": "bot",
+    "id": 88,
+    "created_at": "2025-12-04T10:40:20.719907Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is HTML code for front end",
+    "role": "user",
+    "id": 89,
+    "created_at": "2025-12-04T10:40:49.654959Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Sorry, not good at it. I am just looking for",
+    "role": "bot",
+    "id": 90,
+    "created_at": "2025-12-04T10:40:51.599321Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is full form of HTML",
+    "role": "user",
+    "id": 91,
+    "created_at": "2025-12-04T10:41:09.509439Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 92,
+    "created_at": "2025-12-04T10:41:10.118164Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is full form of HTML",
+    "role": "user",
+    "id": 93,
+    "created_at": "2025-12-04T10:43:22.752006Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 94,
+    "created_at": "2025-12-04T10:43:23.387347Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What is the meaning of engineering",
+    "role": "user",
+    "id": 95,
+    "created_at": "2025-12-04T10:45:30.906319Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 96,
+    "created_at": "2025-12-04T10:45:31.678101Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Hii",
+    "role": "user",
+    "id": 97,
+    "created_at": "2025-12-04T10:47:39.516855Z"
+  },
+  {
+    "user_id": 1,
+    "message": "So nice!",
+    "role": "bot",
+    "id": 98,
+    "created_at": "2025-12-04T10:47:40.102881Z"
+  },
+  {
+    "user_id": 1,
+    "message": "I want to ask about SSC exam",
+    "role": "user",
+    "id": 99,
+    "created_at": "2025-12-04T10:47:54.504770Z"
+  },
+  {
+    "user_id": 1,
+    "message": "That's how it went for me too",
+    "role": "bot",
+    "id": 100,
+    "created_at": "2025-12-04T10:47:55.623903Z"
+  },
+  {
+    "user_id": 1,
+    "message": "what is html",
+    "role": "user",
+    "id": 101,
+    "created_at": "2025-12-04T10:48:07.905619Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Oh. Haha.",
+    "role": "bot",
+    "id": 102,
+    "created_at": "2025-12-04T10:48:08.657537Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Don't give false reactions",
+    "role": "user",
+    "id": 103,
+    "created_at": "2025-12-04T10:48:10.933593Z"
+  },
+  {
+    "user_id": 1,
+    "message": "I'm not?",
+    "role": "bot",
+    "id": 104,
+    "created_at": "2025-12-04T10:48:11.615950Z"
+  },
+  {
+    "user_id": 1,
+    "message": "python",
+    "role": "user",
+    "id": 105,
+    "created_at": "2025-12-04T10:48:13.604744Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Haha sorry, meant not",
+    "role": "bot",
+    "id": 106,
+    "created_at": "2025-12-04T10:48:14.705676Z"
+  },
+  {
+    "user_id": 1,
+    "message": "SSC exam details",
+    "role": "user",
+    "id": 107,
+    "created_at": "2025-12-04T10:48:20.415988Z"
+  },
+  {
+    "user_id": 1,
+    "message": "So I am guessing it wasn't that then. I have no idea what it is.",
+    "role": "bot",
+    "id": 108,
+    "created_at": "2025-12-04T10:48:22.774628Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Suggest exams based on my skills",
+    "role": "user",
+    "id": 109,
+    "created_at": "2025-12-04T10:48:26.780122Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Oh no I'm sure it isn't",
+    "role": "bot",
+    "id": 110,
+    "created_at": "2025-12-04T10:48:27.899496Z"
+  },
+  {
+    "user_id": 1,
+    "message": "What you can help me with",
+    "role": "user",
+    "id": 111,
+    "created_at": "2025-12-04T10:48:38.801165Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Haha",
+    "role": "bot",
+    "id": 112,
+    "created_at": "2025-12-04T10:48:39.609916Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Explain OOPS in simple words.",
+    "role": "user",
+    "id": 113,
+    "created_at": "2025-12-04T10:48:43.659968Z"
+  },
+  {
+    "user_id": 1,
+    "message": "I have a basic knowledge in JS and CSS",
+    "role": "bot",
+    "id": 114,
+    "created_at": "2025-12-04T10:48:45.255708Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Create a Data Analyst roadmap.",
+    "role": "user",
+    "id": 115,
+    "created_at": "2025-12-04T10:54:20.806849Z"
+  },
+  {
+    "user_id": 1,
+    "message": "full stack devloper",
+    "role": "user",
+    "id": 116,
+    "created_at": "2025-12-04T10:54:37.413067Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 117,
+    "created_at": "2025-12-04T10:54:37.921732Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Data Analyst",
+    "role": "user",
+    "id": 118,
+    "created_at": "2025-12-04T10:54:54.100405Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 119,
+    "created_at": "2025-12-04T10:54:54.655689Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Data Analyst",
+    "role": "user",
+    "id": 120,
+    "created_at": "2025-12-04T10:55:02.439207Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 121,
+    "created_at": "2025-12-04T10:55:02.943632Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Data Analyst",
+    "role": "user",
+    "id": 122,
+    "created_at": "2025-12-04T10:55:09.454560Z"
+  },
+  {
+    "user_id": 1,
+    "message": "",
+    "role": "bot",
+    "id": 123,
+    "created_at": "2025-12-04T10:55:10.011324Z"
+  },
+  {
+    "user_id": 1,
+    "message": "Create a Data Analyst roadmap.",
+    "role": "user",
+    "id": 124,
+    "created_at": "2025-12-04T11:03:04.630786Z"
+  }
+]

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XamSetu — Learn • Assess • Get Hired</title>
+
+  <!-- Professional font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#5a2d82;
+      --brand-2:#7a42a6;
+      --text:#0f172a;
+      --muted:#64748b;
+      --bg:#f7f7fb;
+      --card:#ffffff;
+      --ring:rgba(90,45,130,.25);
+      --success:#16a34a;
+      --danger:#dc2626;
+      --shadow:0 10px 30px rgba(2,6,23,.08);
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:linear-gradient(180deg,#ffffff 0%, #fbf9ff 40%, #ffffff 100%);
+    }
+
+    /* Topbar */
+    .topbar{
+      background:#0b1020;
+      color:#cbd5e1;
+      font-size:.9rem;
+    }
+    .container{
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    .topbar .row{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:8px 0;
+    }
+    .topbar a{color:#cbd5e1;text-decoration:none;opacity:.9}
+    .topbar a:hover{opacity:1;text-decoration:underline}
+
+    /* Header / Navbar */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.85);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid #eef2ff;
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:14px 0;
+    }
+    .logo{
+      display:flex;align-items:center;gap:10px;
+      font-weight:800;font-size:1.25rem;color:var(--brand);
+      letter-spacing:.2px;
+    }
+    .logo-badge{
+      width:36px;height:36px;border-radius:10px;
+      display:grid;place-items:center;
+      background: radial-gradient(100% 100% at 0% 0%, var(--brand) 0%, var(--brand-2) 100%);
+      color:#fff;
+      box-shadow:0 6px 16px rgba(90,45,130,.35);
+      font-weight:900;
+    }
+    nav ul{
+      list-style:none;margin:0;padding:0;
+      display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+    }
+    nav > ul > li{
+      position:relative;
+      padding:10px 12px;border-radius:10px;cursor:pointer;
+      color:#111827;font-weight:600;font-size:.95rem;
+      transition:.2s;
+    }
+    nav > ul > li:hover{background:#f4f1fa}
+    nav li ul{
+      position:absolute;top:44px;left:0;background:#fff;border:1px solid #eee;
+      border-radius:12px;min-width:200px;padding:8px;display:none;box-shadow:var(--shadow);
+    }
+    nav li:hover ul{display:block}
+    nav li ul li{
+      padding:10px;border-radius:8px;color:#111827;font-weight:500;white-space:nowrap;
+    }
+    nav li ul li:hover{background:#f8f5ff}
+
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      height:40px;padding:0 16px;border-radius:10px;border:1px solid #e5e7eb;
+      text-decoration:none;color:#111827;font-weight:600;background:#fff;transition:.2s;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(2,6,23,.08)}
+    .btn.primary{
+      border-color:transparent;color:#fff;background:linear-gradient(90deg,var(--brand),var(--brand-2));
+      box-shadow:0 10px 22px rgba(90,45,130,.35);
+    }
+    .hamburger{display:none;border:0;background:transparent;font-size:26px;cursor:pointer}
+
+    /* Social (keep same icons) */
+    header .social a{
+      margin-left:12px;display:inline-flex;align-items:center;justify-content:center;
+      width:28px;height:28px;border-radius:8px;transition:.25s;position:relative;
+    }
+    header .social img{
+      width:20px;height:20px;filter: invert(100%); /* white icons on brand bg if used on dark */
+      opacity:.95;transition:.25s;
+    }
+    header .social a:hover img{transform:scale(1.12);opacity:1}
+
+    /* Hero */
+    .hero{
+      padding:56px 0 30px;
+    }
+    .hero-row{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      background: #f4f1fa;border:1px solid #ede7f7;color:var(--brand);
+      padding:8px 12px;border-radius:999px;font-weight:700;font-size:.82rem;
+      box-shadow:var(--shadow);
+    }
+    h1{
+      font-size: clamp(1.9rem, 1.2rem + 2.5vw, 3rem);
+      line-height:1.15;margin:14px 0 10px;color:#0b1220;
+      letter-spacing:-.02em;
+    }
+    .lead{
+      color:var(--muted);font-size:1.05rem;line-height:1.7;max-width:60ch;
+    }
+    .hero-cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .hero-card{
+      background:linear-gradient(180deg,#ffffff 0%, #fbfaff 100%);
+      border:1px solid #f0f0f5;border-radius:16px;padding:18px;
+      box-shadow: var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";position:absolute;inset:auto -30% 40% auto;width:60%;height:180%;
+      background: radial-gradient(60% 60% at 50% 40%, rgba(122,66,166,.15) 0%, rgba(122,66,166,0) 60%);
+      transform:rotate(12deg);
+    }
+    .badge{
+      display:inline-block;background:#ecfdf5;border:1px solid #bbf7d0;color:#065f46;
+      padding:4px 10px;border-radius:999px;font-size:.8rem;font-weight:700;
+    }
+
+    /* Search */
+    .search-section{padding:18px 0}
+    .search-box{
+      position:relative;display:flex;gap:10px;align-items:center;
+      background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:8px 12px;
+      box-shadow: var(--shadow);
+    }
+    .search-box input{
+      border:0;outline:none;width:100%;font-size:1rem;padding:10px 6px;background:transparent;
+    }
+    .suggestions{
+      position:absolute;top:52px;left:0;right:0;background:#fff;border:1px solid #eee;border-radius:12px;
+      display:none;text-align:left;z-index:10;box-shadow:var(--shadow);overflow:hidden;
+    }
+    .suggestions li{padding:10px 12px;cursor:pointer}
+    .suggestions li:hover{background:#f8f5ff}
+
+    /* Content Sections */
+    section{padding:40px 0}
+    .section-title{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;
+    }
+    .section-title h2{margin:0;color:#0b1220;font-size:1.4rem}
+    .grid{
+      display:grid;gap:16px;
+      grid-template-columns:repeat(12,minmax(0,1fr));
+    }
+    .col-3{grid-column: span 3}
+    .col-4{grid-column: span 4}
+    .col-6{grid-column: span 6}
+    .col-12{grid-column: span 12}
+    @media (max-width:992px){
+      .hero-row{grid-template-columns:1fr}
+      .col-3,.col-4,.col-6{grid-column: span 12}
+    }
+
+    .card{
+      background:var(--card);border:1px solid #eef2ff;border-radius:var(--radius);
+      padding:16px;transition:.25s;box-shadow:var(--shadow);
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(2,6,23,.12)}
+
+    .news li{
+      background:#fff;margin-bottom:10px;padding:12px;border:1px solid #eee;border-radius:12px;
+      cursor:pointer;transition:.2s;list-style:none;
+    }
+    .news li:hover{background:#f8f5ff}
+
+    .pill{
+      display:inline-flex;gap:6px;align-items:center;
+      background:#f4f1fa;border:1px solid #ede7f7;color:#3b0764;
+      padding:6px 10px;border-radius:999px;font-size:.8rem;font-weight:700;
+    }
+
+    /* Feature blocks */
+    .feature{
+      display:flex;gap:12px;align-items:flex-start;
+    }
+    .feature .icon{
+      width:38px;height:38px;border-radius:12px;
+      display:grid;place-items:center;color:#fff;
+      background:linear-gradient(145deg, var(--brand), var(--brand-2));
+      box-shadow:0 8px 18px rgba(90,45,130,.35);
+      flex:0 0 auto;
+    }
+    .feature h4{margin:2px 0 4px}
+    .muted{color:var(--muted)}
+
+    /* Footer */
+    footer{
+      margin-top:30px;
+      background:#0b1020;color:#cbd5e1;
+      border-top:1px solid rgba(255,255,255,.05);
+    }
+    .footer-grid{
+      display:grid;gap:20px;grid-template-columns:2fr 1fr 1fr 1.2fr;
+      padding:28px 0;
+    }
+    .footer-col h4{margin:0 0 12px;font-size:1rem;color:#e2e8f0}
+    .footer-col a{display:block;color:#cbd5e1;text-decoration:none;padding:6px 0;opacity:.9}
+    .footer-col a:hover{opacity:1;text-decoration:underline}
+    .footer-social a{margin-right:12px}
+    .subfooter{border-top:1px solid rgba(255,255,255,.07);padding:12px 0;color:#94a3b8;font-size:.95rem}
+
+    /* Chat (hover to open) */
+    .chatbot-wrapper{
+      position:fixed;bottom:20px;right:20px;z-index:10000;
+    }
+    .chatbot-btn{
+      background:linear-gradient(145deg, var(--brand), var(--brand-2));
+      color:#fff;border:0;width:56px;height:56px;border-radius:50%;
+      font-size:22px;cursor:pointer;
+      display:grid;place-items:center;
+      box-shadow:0 12px 28px rgba(90,45,130,.35);
+      transition:.2s;
+    }
+    .chatbot-btn:hover{transform:translateY(-2px) scale(1.03)}
+    .chat-popup{
+      position:absolute;bottom:70px;right:0;width:360px;max-width:86vw;
+      background:#ffffff;border:1px solid #eef2ff;border-radius:16px;
+      box-shadow:0 20px 40px rgba(2,6,23,.18);
+      padding:12px;display:none;
+      animation:pop .2s ease;
+    }
+    .chatbot-wrapper:hover .chat-popup{display:block}
+    @keyframes pop{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .chat-head{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;
+    }
+    .chat-title{display:flex;align-items:center;gap:10px}
+    .dot{
+      width:10px;height:10px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px rgba(22,163,74,.15)
+    }
+    .chat-area{
+      height:280px;overflow:auto;border:1px solid #eef2ff;border-radius:12px;padding:10px;
+      background:linear-gradient(180deg,#ffffff, #fcfdff 60%);
+    }
+    .chat-row{margin:6px 0;display:flex}
+    .chat-row.user{justify-content:flex-end}
+    .bubble{
+      max-width:80%;padding:10px 12px;border-radius:12px;font-size:.95rem;line-height:1.45;
+      box-shadow:0 8px 18px rgba(2,6,23,.06);
+    }
+    .bubble.user{background:linear-gradient(145deg, var(--brand), var(--brand-2));color:#fff;border-top-right-radius:4px}
+    .bubble.bot{background:#f4f1fa;color:#0b1220;border-top-left-radius:4px;border:1px solid #ede7f7}
+    .chat-form{display:flex;gap:8px;margin-top:8px}
+    .chat-input{
+      flex:1;border:1px solid #e5e7eb;border-radius:999px;padding:10px 12px;outline:none;
+      transition:.15s;background:#fff;
+    }
+    .chat-input:focus{box-shadow:0 0 0 4px var(--ring);border-color:var(--brand)}
+    .send-btn{
+      border:0;background:linear-gradient(145deg, var(--brand), var(--brand-2));color:#fff;
+      padding:0 16px;border-radius:999px;font-weight:700;cursor:pointer;
+      box-shadow:0 10px 20px rgba(90,45,130,.35);
+    }
+
+    /* Utilities */
+    .hidden{display:none}
+
+    /* Mobile */
+    @media (max-width: 900px){
+      .hamburger{display:block}
+      nav ul{display:none;flex-direction:column;align-items:flex-start;background:#fff;padding:10px;border:1px solid #eee;border-radius:12px;}
+      nav ul.active{display:flex}
+      .nav-actions{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div>📧 support@xamsetu.com &nbsp; | &nbsp; 📞 +91-6393444944</div>
+        <div class="social">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/meta.svg" alt="Facebook">
+          </a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+          </a>
+          <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge">XS</div>
+        XamSetu
+      </div>
+
+      <button class="hamburger" aria-label="Toggle menu">☰</button>
+
+      <nav>
+        <ul id="menu">
+          <li>Home</li>
+          <li>Exams
+            <ul>
+              <li>Govt.</li>
+              <li>Private</li>
+              <li>Semi Govt.</li>
+              <li>Out of India</li>
+            </ul>
+          </li>
+          <li>Jobs
+            <ul>
+              <li>Govt.</li>
+              <li>Private</li>
+              <li>Semi Govt.</li>
+              <li>Out of India</li>
+            </ul>
+          </li>
+          <li>Courses</li>
+          <li>Scholarships</li>
+          <li>Notifications</li>
+          <li><a href="/chat" style="text-decoration:none;color:inherit">XamBot Chat </a></li>
+          <li>About Us</li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="/login" class="btn">Login</a>
+        <a href="/registration" class="btn primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-row">
+      <div>
+        <span class="eyebrow">AI that explains, not obscures</span>
+        <h1>Bridge the gap from <span style="color:var(--brand)">Learning</span> to <span style="color:var(--brand-2)">Earning</span>.</h1>
+        <p class="lead">
+          XamSetu unifies exams, interviews, and resumes into one workspace. Built with
+          <strong>Explainable AI (XAI)</strong> for trust, and <strong>Document AI</strong> (TrOCR, Donut, LayoutLM family)
+          to parse past papers & forms for dataset building. Aligned with
+          <strong>SDG 4</strong> (Quality Education) and <strong>SDG 8</strong> (Decent Work & Economic Growth).
+        </p>
+        <div class="hero-cta">
+          <a href="/registration" class="btn primary">Explore Products</a>
+          <a href="#search" class="btn">Search Now</a>
+          <span class="pill">Fragmented ecosystem → One platform</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="badge">Live Insights</div>
+        <p class="muted" style="margin-top:10px">
+          Smart suggestions, job matches, and explainable recommendations updated in real time as you interact.
+        </p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div class="card">
+            <div class="feature">
+              <div class="icon">📄</div>
+              <div>
+                <h4>Document AI</h4>
+                <div class="muted">Parse past papers, receipts & forms accurately.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="feature">
+              <div class="icon">🔍</div>
+              <div>
+                <h4>XAI Feedback</h4>
+                <div class="muted">Transparent reasons behind every suggestion.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="feature">
+              <div class="icon">🧭</div>
+              <div>
+                <h4>Personal Roadmaps</h4>
+                <div class="muted">From skills → projects → interviews.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="feature">
+              <div class="icon">🌍</div>
+              <div>
+                <h4>SDG Alignment</h4>
+                <div class="muted">SDG-4 & SDG-8 principles in action.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /hero-card -->
+    </div>
+  </section>
+
+  <!-- Search -->
+  <section id="search" class="search-section">
+    <div class="container">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search exams, jobs, courses…">
+        <ul class="suggestions" id="suggestions"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Jobs & Exams -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Popular Jobs & Exams</h2>
+        <span class="muted">Curated for you</span>
+      </div>
+      <div class="grid">
+        <div class="col-4">
+          <div class="card">UPSC Civil Services</div>
+        </div>
+        <div class="col-4">
+          <div class="card">SSC CGL</div>
+        </div>
+        <div class="col-4">
+          <div class="card">Google Software Engineer</div>
+        </div>
+        <div class="col-4">
+          <div class="card">AI/ML Specialist</div>
+        </div>
+        <div class="col-4">
+          <div class="card">Bank PO</div>
+        </div>
+        <div class="col-4">
+          <div class="card">SQL Fundamentals</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Latest News</h2>
+        <a href="#" class="btn">View All</a>
+      </div>
+      <ul class="news">
+        <li>UPSC Prelims 2025 notification released</li>
+        <li>Google hiring AI interns globally</li>
+        <li>SSC CGL 2025 exam dates announced</li>
+        <li>Scholarships open for international students</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Value Props -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Why XamSetu?</h2>
+        <span class="muted">Real outcomes, real clarity</span>
+      </div>
+      <div class="grid">
+        <div class="col-6">
+          <div class="card feature">
+            <div class="icon">🧠</div>
+            <div>
+              <h4>Explainable AI (2019–2025)</h4>
+              <p class="muted">Trustable predictions and interview prep with rationale behind every recommendation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card feature">
+            <div class="icon">📚</div>
+            <div>
+              <h4>Document AI (TrOCR, Donut, LayoutLM)</h4>
+              <p class="muted">Accurate parsing of past papers, forms, and receipts to build robust learning datasets.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card feature">
+            <div class="icon">🔗</div>
+            <div>
+              <h4>Unified Workflow</h4>
+              <p class="muted">End the fragmented ecosystem—exams, resumes, and interviews live together.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card feature">
+            <div class="icon">✅</div>
+            <div>
+              <h4>Aligned to SDG-4 & SDG-8</h4>
+              <p class="muted">Quality education and decent work are core to our product decisions and outcomes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="color:#e2e8f0">
+          <div class="logo-badge">XS</div>
+          XamSetu
+        </div>
+        <p class="muted" style="margin-top:10px">
+          From learning to earning—powered by XAI and Document AI.
+        </p>
+        <div class="footer-social">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/meta.svg" alt="Facebook" width="22" height="22" style="filter: invert(100%);opacity:.95">
+          </a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" width="22" height="22" style="filter: invert(100%);opacity:.95">
+          </a>
+          <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" width="22" height="22" style="filter: invert(100%);opacity:.95">
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#">Assessments</a>
+        <a href="#">Interview Prep</a>
+        <a href="https://ats100.vercel.app/pro">Resume Builder</a>
+        <a href="#">Roadmaps</a>
+      </div>
+
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div style="margin-top:10px">
+          <a href="#" class="btn" style="padding:8px 14px;height:auto">Get in touch</a>
+        </div>
+      </div>
+    </div>
+    <div class="subfooter">
+      <div class="container">© <span id="year"></span> XamSetu. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Floating Chat (Hover to open) -->
+  <div class="chatbot-wrapper" aria-label="Chat with XamBot">
+    <button class="chatbot-btn" title="Chat with XamBot">💬</button>
+
+    <div class="chat-popup" role="dialog" aria-modal="false" aria-label="XamBot chat">
+      <div class="chat-head">
+        <div class="chat-title">
+          <div class="dot"></div>
+          <strong>XamBot</strong>
+        </div>
+        <small class="muted">Ask anything…</small>
+      </div>
+
+      <div id="chatArea" class="chat-area" aria-live="polite"></div>
+
+      <form id="chatForm" class="chat-form" autocomplete="off">
+        <input id="chatInput" class="chat-input" placeholder="Ask XamBot anything…" />
+        <button class="send-btn" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.getElementById('menu');
+    hamburger?.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+
+    // Search with suggestions
+    const searchInput = document.getElementById('searchInput');
+    const suggestions = document.getElementById('suggestions');
+    const sampleSuggestions = [
+      "Govt Exams", "Private Jobs", "AI Courses",
+      "Scholarships", "Resume Builder"
+    ];
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      suggestions.innerHTML = '';
+      if (query) {
+        const filtered = sampleSuggestions.filter(item => item.toLowerCase().includes(query));
+        if (filtered.length) {
+          suggestions.style.display = 'block';
+          filtered.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            li.onclick = () => {
+              searchInput.value = item;
+              suggestions.style.display = 'none';
+            };
+            suggestions.appendChild(li);
+          });
+        } else {
+          suggestions.style.display = 'none';
+        }
+      } else {
+        suggestions.style.display = 'none';
+      }
+    });
+
+    // Chat logic (calls your Flask /api/chat)
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatArea = document.getElementById('chatArea');
+
+    function addMsg(who, text) {
+      const row = document.createElement('div');
+      row.className = 'chat-row ' + (who === 'user' ? 'user' : 'bot');
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble ' + (who === 'user' ? 'user' : 'bot');
+      bubble.innerHTML = text.replace(/\n/g, '<br>');
+      row.appendChild(bubble);
+      chatArea.appendChild(row);
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }
+
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = (chatInput.value || '').trim();
+      if (!msg) return;
+      addMsg('user', msg);
+      chatInput.value = '';
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ message: msg, user_id: 1 })
+        });
+        const j = await res.json();
+        if (j.ok) {
+          addMsg('bot', j.reply);
+          if (j.jobs) {
+            j.jobs.forEach(jj => {
+              const links = jj.links.map(l => `<div><a style="color:${'#5a2d82'}" target="_blank" href="${l}">${l}</a></div>`).join('');
+              addMsg('bot', `<strong>${jj.title}</strong><br>${links}`);
+            });
+          }
+        } else {
+          addMsg('bot', 'Sorry, something went wrong.');
+        }
+      } catch (err) {
+        addMsg('bot', 'Network error. Please try again.');
+      }
+    });
+
+    // Reveal animation on scroll
+    const reveal = (el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(12px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+      const io = new IntersectionObserver(([entry], obs) => {
+        if(entry.isIntersecting){
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+          obs.disconnect();
+        }
+      }, {threshold:.15});
+      io.observe(el);
+    };
+    document.querySelectorAll('.card, .feature, .news li, .hero-card').forEach(reveal);
+  </script>
+</body>
+</html>

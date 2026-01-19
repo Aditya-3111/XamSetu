@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white rounded shadow p-4 h-[70vh] flex flex-col">
+  <div id="chatArea" class="flex-1 overflow-auto border p-2 mb-2 rounded"></div>
+  <form id="chatForm" class="flex gap-2">
+    <input id="chatInput" class="flex-1 border rounded p-2" placeholder="Ask XamBot anything..." />
+    <button class="px-4 py-2 bg-indigo-600 text-white rounded">Send</button>
+  </form>
+</div>
+<script>
+const chatForm=document.getElementById('chatForm');
+const chatInput=document.getElementById('chatInput');
+const chatArea=document.getElementById('chatArea');
+function addMsg(who,text){
+  const el=document.createElement('div');
+  el.className=who==='user'?'text-right my-1':'text-left my-1';
+  el.innerHTML=`<div class="inline-block px-3 py-2 rounded ${who==='user'?'bg-indigo-600 text-white':'bg-slate-200 text-black'}">${text.replace(/\n/g,'<br>')}</div>`;
+  chatArea.appendChild(el);
+  chatArea.scrollTop=chatArea.scrollHeight;
+}
+chatForm.addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  const msg=chatInput.value.trim();
+  if(!msg) return;
+  addMsg('user',msg);
+  chatInput.value='';
+  const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg,user_id:1})});
+  const j=await res.json();
+  if(j.ok){
+    addMsg('bot',j.reply);
+    if(j.jobs){
+      j.jobs.forEach(jj=>{
+        const links = jj.links.map(l=>`<div><a class="text-indigo-600" target="_blank" href="${l}">${l}</a></div>`).join('');
+        addMsg('bot', `<b>${jj.title}</b><br>${links}`);
+      });
+    }
+  } else {
+    addMsg('bot','Sorry, something went wrong.');
+  }
+});
+</script>
+{% endblock %}
